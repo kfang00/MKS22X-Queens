@@ -28,7 +28,15 @@ public class QueenBoard {
   *(pythonic string notation for clarity,
   *excludes the character up to the *)
   */
-  public String toString(){}
+  public String toString(){
+    String s = "";
+    for (int n = 0; n < board.length; n++) {
+      for (int a = 0; a < board[0].length; a++) {
+        s += board[n][a];
+      }
+    }
+    return s;
+  }
 
 
 
