@@ -1,17 +1,17 @@
-Instance Variables:
+public class QueenBoard {
   private int[][]board;
 
-Constructor:
+
   public QueenBoard(int size){}
 
 
-Private methods (suggested):
+
   private boolean addQueen(int r, int c)
   private boolean removeQueen(int r, int c)
 
 
 
-Public Methods:
+
   /**
   *@return The output string formatted as follows:
   *All numbers that represent queens are replaced with 'Q'
@@ -45,3 +45,5 @@ Public Methods:
   *@throws IllegalStateException when the board starts with any non-zero value
   */
   public int countSolutions(){}
+
+}
