@@ -36,7 +36,24 @@ public class QueenBoard {
   }
 
   private boolean removeQueen(int r, int c) {
-    return true;
+    if (board[r][c] == -1) {
+      board[r][c] = 0;	
+      for (int a = (c + 1); a < board.length; a++) {
+        board[r][a] = board[r][a] - 1;
+      }
+      for (int b = (c + 1); b < board.length; b++) {
+	if ((r + (b - c)) < board.length) {
+          board[r + (b - c)][b] = board[r + (b - c)][b] - 1;
+	}
+	if ((r - (b - c)) > -1) {
+          board[r - (b - c)][b] = board[r - (b - c)][b] - 1;
+	}
+      }
+      return true;
+    }
+    else {
+      return false;
+    }
   }
 
 
