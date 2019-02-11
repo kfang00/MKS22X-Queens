@@ -6,7 +6,7 @@ public class QueenBoard {
     board = new int[size][size];
   }
 
-  private void removeNull() {
+  public void removeNull() { //change these back to private later
     for (int a = 0; a < board.length; a++) {
       for (int b = 0; b < board.length; b++) {
 	board[a][b] = 0;
@@ -14,7 +14,7 @@ public class QueenBoard {
     }
   }
 
-  private boolean addQueen(int r, int c) {
+  public boolean addQueen(int r, int c) {
     if (board[r][c] == 0) {
       board[r][c] = -1;	
       for (int a = (c + 1); a < board.length; a++) {
@@ -36,7 +36,7 @@ public class QueenBoard {
   }
 
   private boolean removeQueen(int r, int c) {
-
+    return true;
   }
 
 
@@ -63,6 +63,9 @@ public class QueenBoard {
 	if (board[n][a] == -1) {
 	  s += "Q ";
 	}
+	if (board[n][a] == 1) {
+	  s += "A ";
+	}
 	else {
           s += "_ ";
 	}
@@ -82,12 +85,12 @@ public class QueenBoard {
   *@throws IllegalStateException when the board starts with any non-zero value
 
   */
-  public boolean solve(){}
+  //public boolean solve(){}
 
   /**
   *@return the number of solutions found, and leaves the board filled with only 0's
   *@throws IllegalStateException when the board starts with any non-zero value
   */
-  public int countSolutions(){}
+  //public int countSolutions(){}
 
 }
