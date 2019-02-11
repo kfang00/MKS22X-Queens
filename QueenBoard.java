@@ -63,8 +63,11 @@ public class QueenBoard {
 	if (board[n][a] == -1) {
 	  s += "Q ";
 	}
-	if (board[n][a] == 1) {
+	else if (board[n][a] == 1) {
 	  s += "A ";
+	}
+	else if (board[n][a] == 2) {
+	  s += "B ";
 	}
 	else {
           s += "_ ";
