@@ -6,10 +6,33 @@ public class QueenBoard {
     board = new int[size][size];
   }
 
+  private void removeNull() {
+    for (int a = 0; a < board.length; a++) {
+      for (int b = 0; b < board.length; b++) {
+	board[a][b] = 0;
+      }
+    }
+  }
 
+  private boolean addQueen(int r, int c) {
+    if (board[r][c] == 0) {
+      board[r][c] = -1;
+      for (int a = (c + 1); a < board.length; a++) {
+        board[r][a] = board[r][a] + 1;
+      }
+      for (int b = (c + 1); b < board.length; b++) {
+        board[r][a] = board[r][a] + 1;
+      }
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
 
-  private boolean addQueen(int r, int c)
-  private boolean removeQueen(int r, int c)
+  private boolean removeQueen(int r, int c) {
+
+  }
 
 
 
