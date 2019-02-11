@@ -16,12 +16,17 @@ public class QueenBoard {
 
   private boolean addQueen(int r, int c) {
     if (board[r][c] == 0) {
-      board[r][c] = -1;
+      board[r][c] = -1;	
       for (int a = (c + 1); a < board.length; a++) {
         board[r][a] = board[r][a] + 1;
       }
       for (int b = (c + 1); b < board.length; b++) {
-        board[r][a] = board[r][a] + 1;
+	if ((r + (b - c)) < board.length) {
+          board[r + (b - c)][b] = board[r + (b - c)][b] + 1;
+	}
+	if ((r - (b - c)) > -1) {
+          board[r - (b - c)][b] = board[r - (b - c)][b] + 1;
+	}
       }
       return true;
     }
