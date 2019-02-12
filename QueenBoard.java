@@ -117,7 +117,7 @@ public class QueenBoard {
 
   public boolean solve(){
     if (!checkZero()) {
-      throw IllegalStateException();
+      throw new IllegalStateException();
     }
     return solveR(0);
   }
@@ -172,7 +172,6 @@ public class QueenBoard {
 	removeQueen(a, c);
       }
     }
-    removeNull();
     return false;
   }
 
@@ -189,6 +188,24 @@ public class QueenBoard {
   *@return the number of solutions found, and leaves the board filled with only 0's
   *@throws IllegalStateException when the board starts with any non-zero value
   */
-  //public int countSolutions(){}
+  public int countSolutions(){
+    if (!checkZero()) {
+      throw new IllegalStateException();
+    }
+    return countH(0, 0);
+  }
+
+  public int countH(int count, int c) {
+    if (c >= board.length) {
+      return 1;
+    }
+    for (int a = 0; a < board.length; a++) {
+      if (addQueen(a, c)) {
+        removeQueen(a, c);
+	return countH(count + 1, c + 1);
+      }
+    }
+    return count;
+  }
 
 }
