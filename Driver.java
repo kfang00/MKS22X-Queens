@@ -15,7 +15,7 @@ public class Driver {
     System.out.println(q);
     q.addQueen(4, 4);
     System.out.println(q);
-    QueenBoard a = new QueenBoard(3);
+    QueenBoard a = new QueenBoard(8);
     a.removeNull();
     System.out.println(a.solve());
     System.out.println(a);

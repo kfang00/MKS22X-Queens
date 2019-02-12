@@ -83,12 +83,6 @@ public class QueenBoard {
 	if (board[n][a] == -1) {
 	  s += "Q ";
 	}
-	else if (board[n][a] == 1) {
-	  s += "A ";
-	}
-	else if (board[n][a] == 2) {
-	  s += "B ";
-	}
 	else {
           s += "_ ";
 	}
@@ -152,8 +146,8 @@ public class QueenBoard {
     return false;
   }
 
-  private boolean solveR(int c) { //trying again using k's approach
-    if (c > board.length) {
+  public boolean solveR(int c) { //trying again using k's approach
+    if (c >= board.length) {
       return true;
     }
     for (int a = 0; a < board.length; a++) {
