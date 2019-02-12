@@ -6,10 +6,11 @@ public class QueenBoard {
 
   public QueenBoard(int size){
     board = new int[size][size];
-    queens = new ArrayList<String>();
+    removeNull();
+    queens = new ArrayList<String>(); //not needed anymore
   }
 
-  public void removeNull() { //change these back to private later
+  public void removeNull() { 
     for (int a = 0; a < board.length; a++) {
       for (int b = 0; b < board.length; b++) {
 	board[a][b] = 0;
@@ -103,12 +104,25 @@ public class QueenBoard {
   *@throws IllegalStateException when the board starts with any non-zero value
 
   */
+  private boolean checkZero() {
+    for (int a = 0; a < board.length; a++) {
+      for (int b = 0; b < board.length; b++) {
+        if (board[a][b] != 0) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
   public boolean solve(){
+    if (!checkZero()) {
+      throw IllegalStateException();
+    }
     return solveR(0);
   }
 
-//is there a queen in this column already - if yes remove that queen find next avaliable queen space if no then just find next avaliable queen space
-//reminder : exceptions and removeNulls when false and when true leave in solved state
+//is there a queen in this column already - if yes remove that queen find next avaliable queen space if no then just find next avaliable queen space - not necessary now
   private boolean solveH(int r, int c) { //my attempt
     int hold;
     boolean add;
@@ -158,10 +172,11 @@ public class QueenBoard {
 	removeQueen(a, c);
       }
     }
+    removeNull();
     return false;
   }
 
-  private int findQueen(int c) {
+  private int findQueen(int c) { //not necessary now
     for (int a = 0; a < board.length; a++) {
       if (board[a][c] == -1) {
 	return a;
