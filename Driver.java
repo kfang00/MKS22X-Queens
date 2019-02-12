@@ -9,6 +9,12 @@ public class Driver {
     System.out.println(q);
     q.addQueen(4, 3);
     System.out.println(q);
+    q.removeQueen(2, 3);
+    System.out.println(q);
+    q.removeQueen(4, 4);
+    System.out.println(q);
+    q.addQueen(4, 4);
+    System.out.println(q);
   }
 
 }

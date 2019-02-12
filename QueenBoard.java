@@ -1,5 +1,7 @@
+import java.util.ArrayList;
 public class QueenBoard {
   private int[][]board;
+  private ArrayList<String> queens;
 
 
   public QueenBoard(int size){
@@ -35,7 +37,7 @@ public class QueenBoard {
     }
   }
 
-  private boolean removeQueen(int r, int c) {
+  public boolean removeQueen(int r, int c) {
     if (board[r][c] == -1) {
       board[r][c] = 0;	
       for (int a = (c + 1); a < board.length; a++) {
@@ -94,8 +96,9 @@ public class QueenBoard {
     }
     return s;
   }
-
-
+//base - if num of queens equal size
+//if add successfully move on to next column and in space with no x
+//if whole row cant add queen go back a row and add queen to next space
 
   /**
   *@return false when the board is not solveable and leaves the board filled with zeros;
@@ -105,7 +108,34 @@ public class QueenBoard {
   *@throws IllegalStateException when the board starts with any non-zero value
 
   */
-  //public boolean solve(){}
+  public boolean solve(){
+
+  }
+
+//is there a queen in this column already - if yes remove that queen find next avaliable queen space if no then just find next avaliable queen space
+  private boolean solveH(int r, int c, int numQ) {
+    if (numQ == board.length) {
+      return true;
+    }
+    else {
+      if (!addQueen(r, c) && (r >= (board.length - 1) && (c != 0)) {
+	return solveH(r, c - 1, numQ);
+      }
+      if (!addQueen(r, c) && (r >= (board.length - 1) && (c == 0)) {
+	return false;
+      }
+      if (addQueen(r, c)) {
+	return solveH(r, c + 1, numQ + 1);
+      }
+      if (addQueen(r, c) && (r >= (board.length - 1)) {
+	return solveH(r + 1, c, numQ);
+      }
+      if (!addQueen(r, c) && (r >= (board.length - 1)) {
+	return solveH(r + 1, c, numQ);
+      }
+      return solveH();
+    }
+  }
 
   /**
   *@return the number of solutions found, and leaves the board filled with only 0's
