@@ -2,6 +2,7 @@ import java.util.ArrayList;
 public class QueenBoard {
   private int[][]board;
   private ArrayList<String> queens;
+  private int count;
 
 
   public QueenBoard(int size){
@@ -200,15 +201,14 @@ public class QueenBoard {
       return 1;
     }
     else {
-    for (int a = 0; a < board.length; a++) {
-      if (addQueen(a, c)) {
-        if (solveR(c + 1)) {
-	  return 1 + countH(c);
-	}
-        removeQueen(a, c);
+      count = 0;
+      for (int a = 0; a < board.length; a++) {
+        if (addQueen(a, c)) {
+	  count = count + countH(c + 1);
+          removeQueen(a, c);
+        }
       }
     }
-    }
-    return 0;
+    return count;
   }
 }
