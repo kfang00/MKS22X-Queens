@@ -6,6 +6,7 @@ public class QueenBoard {
 
   public QueenBoard(int size){
     board = new int[size][size];
+    queens = new ArrayList<String>();
   }
 
   public void removeNull() { //change these back to private later
@@ -113,28 +114,35 @@ public class QueenBoard {
   }
 
 //is there a queen in this column already - if yes remove that queen find next avaliable queen space if no then just find next avaliable queen space
-  private boolean solveH(int r, int c, int numQ) {
-    if (numQ == board.length) {
+  private boolean solveH(int r, int c) {
+    if (queens.size() == board.length) {
       return true;
     }
     else {
       if (!addQueen(r, c) && (r >= (board.length - 1) && (c != 0)) {
-	return solveH(r, c - 1, numQ);
+	return false || solveH(r, c - 1);
       }
-      if (!addQueen(r, c) && (r >= (board.length - 1) && (c == 0)) {
+      else if (!addQueen(r, c) && (r >= (board.length - 1) && (c == 0)) {
 	return false;
       }
-      if (addQueen(r, c)) {
-	return solveH(r, c + 1, numQ + 1);
+      else if (!addQueen(r, c)) {
+	return false || solveH(r + 1, c);
       }
-      if (addQueen(r, c) && (r >= (board.length - 1)) {
-	return solveH(r + 1, c, numQ);
+      else if (findQueen()) {
+	removeQueen(r, c);
+	queens.remove(queens.size() - 1);
+	return false || solveH(r + 1, c);
       }
-      if (!addQueen(r, c) && (r >= (board.length - 1)) {
-	return solveH(r + 1, c, numQ);
+      else if (addQueen(r, c)) {
+	queens.add(r + "," + c);
+	return false || solveH(0, c + 1);
       }
-      return solveH();
+      return false;
     }
+  }
+
+  private boolean findQueen() {
+
   }
 
   /**
