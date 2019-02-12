@@ -19,6 +19,8 @@ public class Driver {
     a.removeNull();
     System.out.println(a.solve());
     System.out.println(a);
+    QueenBoard b = new QueenBoard(8);
+    System.out.println(b.countSolutions());
   }
 
 }

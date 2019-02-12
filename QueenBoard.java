@@ -192,20 +192,23 @@ public class QueenBoard {
     if (!checkZero()) {
       throw new IllegalStateException();
     }
-    return countH(0, 0);
+    return countH(0);
   }
 
-  public int countH(int count, int c) {
+  public int countH(int c) {
     if (c >= board.length) {
       return 1;
     }
+    else {
     for (int a = 0; a < board.length; a++) {
       if (addQueen(a, c)) {
+        if (solveR(c + 1)) {
+	  return 1 + countH(c);
+	}
         removeQueen(a, c);
-	return countH(count + 1, c + 1);
       }
     }
-    return count;
+    }
+    return 0;
   }
-
 }
