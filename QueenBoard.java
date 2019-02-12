@@ -115,23 +115,33 @@ public class QueenBoard {
 
 //is there a queen in this column already - if yes remove that queen find next avaliable queen space if no then just find next avaliable queen space
   private boolean solveH(int r, int c) {
+    int hold;
+    boolean add;
     if (queens.size() == board.length) {
       return true;
     }
     else {
-      if (!addQueen(r, c) && (r >= (board.length - 1) && (c != 0)) {
+      hold = findQueen(c);
+      add = addQueen(r, c);
+      if ((hold != 1) && (hold >= (board.length - 1) && (c != 0)) {
 	return false || solveH(r, c - 1);
       }
-      else if (!addQueen(r, c) && (r >= (board.length - 1) && (c == 0)) {
+      if ((hold != 1) && (hold >= (board.length - 1) && (c == 0)) {
 	return false;
       }
-      else if (!addQueen(r, c)) {
+      if ((add == false) && (r >= (board.length - 1) && (c != 0)) {
+	return false || solveH(r, c - 1);
+      }
+      else if ((add == false) && (r >= (board.length - 1) && (c == 0)) {
+	return false;
+      }
+      else if (add == false) {
 	return false || solveH(r + 1, c);
       }
-      else if (findQueen()) {
-	removeQueen(r, c);
+      if (hold != -1) {
+	removeQueen(hold, c);
 	queens.remove(queens.size() - 1);
-	return false || solveH(r + 1, c);
+	return false || solveH(hold + 1, c);
       }
       else if (addQueen(r, c)) {
 	queens.add(r + "," + c);
@@ -141,8 +151,13 @@ public class QueenBoard {
     }
   }
 
-  private boolean findQueen() {
-
+  private int findQueen(int c) {
+    for (int a = 0; a < board.length; a++) {
+      if (board[a][c] == -1) {
+	return a;
+      }
+    }
+    return -1;
   }
 
   /**
