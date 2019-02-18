@@ -16,11 +16,11 @@ public class Driver {
     q.addQueen(4, 4);
     System.out.println(q);
     QueenBoard a = new QueenBoard(8);
-    a.removeNull();
     System.out.println(a.solve());
     System.out.println(a);
     QueenBoard b = new QueenBoard(8);
     System.out.println(b.countSolutions());
+    System.out.println(b);
   }
 
 }

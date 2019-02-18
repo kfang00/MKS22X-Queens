@@ -122,7 +122,7 @@ public class QueenBoard {
     }
     return solveR(0);
   }
-
+/*
 //is there a queen in this column already - if yes remove that queen find next avaliable queen space if no then just find next avaliable queen space - not necessary now
   private boolean solveH(int r, int c) { //my attempt
     int hold;
@@ -160,7 +160,7 @@ public class QueenBoard {
     }
     return false;
   }
-
+*/
   public boolean solveR(int c) { //trying again using k's approach
     if (c >= board.length) {
       return true;
@@ -175,7 +175,7 @@ public class QueenBoard {
     }
     return false;
   }
-
+/*
   private int findQueen(int c) { //not necessary now
     for (int a = 0; a < board.length; a++) {
       if (board[a][c] == -1) {
@@ -184,7 +184,7 @@ public class QueenBoard {
     }
     return -1;
   }
-
+*/
   /**
   *@return the number of solutions found, and leaves the board filled with only 0's
   *@throws IllegalStateException when the board starts with any non-zero value
